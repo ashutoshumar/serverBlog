@@ -47,7 +47,7 @@ app.use("/comment",commentRoute);
 app.use("/categories",categoryRoute);
 
 
-app.listen(proces.env.PORT || '5000',()=>{
+app.listen(process.env.PORT || '5000',()=>{
     console.log("connected to the server")
 
 })
