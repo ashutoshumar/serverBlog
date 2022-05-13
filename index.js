@@ -52,9 +52,9 @@ app.listen(process.env.PORT || '5000',()=>{
 
 })
 
-// app.use(express.static(path.join(__dirname, "/public")));
+ app.use(express.static(path.join(__dirname, "/public")));
 
-// app.get('*', (req, res) => {
-//   res.render("index");
-// });
+ app.get('*', (req, res) => {
+   res.render("index");
+ });
 
