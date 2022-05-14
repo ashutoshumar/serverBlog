@@ -13,7 +13,7 @@ const path = require("path");
 
 dotenv.config()
 app.use(express.json())
-app.use("/images", express.static(path.join(__dirname, "/images")));
+//app.use("/images", express.static(path.join(__dirname, "/images")));
 
 
 
@@ -33,12 +33,12 @@ const storage = multer.diskStorage({
 })
 
 
-const upload = multer({storage:storage})
-app.route("/upload")
-.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-.post(cors.corsWithOptions,upload.single("file"),(req,res)=>{
-    res.status(200).json("file has been uploaded")
-})
+// const upload = multer({storage:storage})
+// app.route("/upload")
+// .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+// .post(cors.corsWithOptions,upload.single("file"),(req,res)=>{
+//     res.status(200).json("file has been uploaded")
+// })
 
 app.use("/auth",authRoute);
 app.use("/users",userRoute);
