@@ -7,7 +7,7 @@ const postRoute = require('./routes/posts')
 const userRoute = require('./routes/users')
 const commentRoute = require('./routes/comment')
 const categoryRoute = require('./routes/categories')
-const multer = require('multer')
+// const multer = require('multer')
 const cors = require('./routes/cors');
 const path = require("path");
 
@@ -23,14 +23,14 @@ mongoose.connect( 'mongodb+srv://ashu:sonal@cluster0.xy77g.mongodb.net/blog?retr
 .then(console.log('data connected'))
 .catch(err=> console.log(err));
 
-const storage = multer.diskStorage({
-    destination:(req,file,cb)=>{
-        cb(null,"images")
-    },
-    filename:(req,file,cb)=>{
-        cb(null,req.body.name)
-    },
-})
+// const storage = multer.diskStorage({
+//     destination:(req,file,cb)=>{
+//         cb(null,"images")
+//     },
+//     filename:(req,file,cb)=>{
+//         cb(null,req.body.name)
+//     },
+// })
 
 
 // const upload = multer({storage:storage})
