@@ -10,17 +10,24 @@ const categoryRoute = require('./routes/categories')
 // const multer = require('multer')
 const cors = require('./routes/cors');
 const path = require("path");
-//const MONGO_URL = process.env.MONGO_URL
 dotenv.config()
 app.use(express.json())
 //app.use("/images", express.static(path.join(__dirname, "/images")));
 
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URl);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}
 
 
-
-mongoose.connect(process.env.MONGO_URL)
-.then(console.log('data connected'))
-.catch(err=> console.log(err));
+//mongoose.connect(process.env.MONGO_URL)
+//.then(console.log('data connected'))
+//.catch(err=> console.log(err));
 
 // const storage = multer.diskStorage({
 //     destination:(req,file,cb)=>{
@@ -46,8 +53,11 @@ app.use("/comment",commentRoute);
 app.use("/categories",categoryRoute);
 
 
-app.listen(process.env.PORT || '5000',()=>{
+connectDB().then(() => {
+  app.listen(process.env.PORT || '5000',()=>{
     console.log("connected to the server")
+  })
+
 
 })
 
