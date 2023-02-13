@@ -18,7 +18,7 @@ app.use(express.json())
 
 
 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect('mongodb://ashu:sonal@cluster0-shard-00-00.xy77g.mongodb.net:27017,cluster0-shard-00-01.xy77g.mongodb.net:27017,cluster0-shard-00-02.xy77g.mongodb.net:27017/blog?ssl=true&replicaSet=atlas-46443f-shard-0&authSource=admin&retryWrites=true&w=majority')
 .then(console.log('data connected'))
 .catch(err=> console.log(err));
 
