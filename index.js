@@ -10,15 +10,15 @@ const categoryRoute = require('./routes/categories')
 // const multer = require('multer')
 const cors = require('./routes/cors');
 const path = require("path");
-
+const MONGO_URL = process.env.MONGO_URL
 dotenv.config()
 app.use(express.json())
 //app.use("/images", express.static(path.join(__dirname, "/images")));
 
 
 
-//mongodb+srv://ashu:sonal@cluster0.xy77g.mongodb.net/blog?retryWrites=true&w=majority
-mongoose.connect( 'mongodb://ashu:sonal@cluster0-shard-00-00.xy77g.mongodb.net:27017,cluster0-shard-00-01.xy77g.mongodb.net:27017,cluster0-shard-00-02.xy77g.mongodb.net:27017/blog?ssl=true&replicaSet=atlas-46443f-shard-0&authSource=admin&retryWrites=true&w=majority')
+
+mongoose.connect(process.env.MONGO_URL)
 .then(console.log('data connected'))
 .catch(err=> console.log(err));
 
